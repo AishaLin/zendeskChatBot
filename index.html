@@ -22,13 +22,10 @@
 
           // Close the page when messenger window is closed
           window.zE("messenger:on", "close", () => {
-            alert(`------ ${window.liff} ------`);
             // For LIFF browser, use LIFF API to close window
             if (window.liff) {
-              alert(`window.liff ------`);
               window.liff.closeWindow();
             } else {
-              alert(`closed ------`);
               // Fallback for regular browsers
               window.close();
             }
