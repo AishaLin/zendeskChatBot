@@ -25,6 +25,7 @@
     const waitForZE = setInterval(() => {
       if (typeof zE !== 'undefined') {
         clearInterval(waitForZE)
+        alert('liff.isInClient()' + liff.isInClient())
 
         // 開啟頁面時，就預設打開聊天視窗（不顯示官方 Launcher）
         zE('messenger', 'open')
