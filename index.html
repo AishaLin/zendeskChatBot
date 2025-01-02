@@ -12,6 +12,15 @@
   <script id="ze-snippet"
     src="https://static.zdassets.com/ekr/snippet.js?key=8598ae7b-38c1-4880-84e0-b4f33ccb2a76"></script>
   <script>
+    // Initialize LIFF
+    liff.init({ liffId: "1493009036-bW0EQ13V" })
+      .then(() => {
+        alert('LIFF initialized');
+      })
+      .catch((err) => {
+        alert('LIFF initialization failed');
+      })
+
     // Wait for Zendesk widget to load
     const waitForZE = setInterval(() => {
       if (typeof zE !== 'undefined') {
