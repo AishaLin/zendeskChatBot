@@ -2,15 +2,18 @@
 <html lang="zh-TW">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LINE GO CS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Service Chat</title>
 </head>
 
 <body>
-  <!-- Zendesk Widget Script -->
-  <script id="ze-snippet"
-    src="https://static.zdassets.com/ekr/snippet.js?key=8598ae7b-38c1-4880-84e0-b4f33ccb2a76"></script>
+  <!-- Add LIFF SDK -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8598ae7b-38c1-4880-84e0-b4f33ccb2a76"
+    async></script>
+
   <script>
     // Initialize LIFF
     liff.init({ liffId: "1493009036-bW0EQ13V" })
@@ -24,22 +27,24 @@
     // Wait for Zendesk widget to load
     const waitForZE = setInterval(() => {
       if (typeof zE !== 'undefined') {
-        clearInterval(waitForZE)
-        alert('liff.isInClient()' + liff.isInClient())
+        clearInterval(waitForZE);
 
         // 開啟頁面時，就預設打開聊天視窗（不顯示官方 Launcher）
-        zE('messenger', 'open')
+        zE('messenger', 'open');
 
         // 觸發聊天視窗關閉時，判斷是否在 LIFF 內，是的話關閉 LIFF，否則關閉整個頁面
         zE('messenger:on', 'close', () => {
+          alert('isInClient:' + liff.isInClient())
+
           if (liff.isInClient()) {
-            liff.closeWindow()
+            liff.closeWindow();
           } else {
-            window.close()
+            alert('window.close: ' + window.close)
+            window.close();
           }
-        })
+        });
       }
-    }, 100)
+    }, 100);
   </script>
 </body>
 
